@@ -4,7 +4,7 @@ I'm using this resource to create a Redux sign-up and login form.
 ### Resources
 • https://medium.com/how-i-get-it/react-with-rails-user-authentication-8977e98762f2
 
-### Process
+### Backend Process
 1. Initialize a Rails backend. 
    1. $ rails new ruby-redux-login-api --database=postgresql
    2. NOTE: Did not use the "--api" flag because session functionality needs to be kept. 
@@ -48,6 +48,43 @@ I'm using this resource to create a Redux sign-up and login form.
 15. Create sessions_controller.rb file and add Restful routes. See file for code.
 16. Add routes for session in routes.rb
 
+### Frontend Process
+1. Create React app with Redux and Redux Tool Kit.
+   1. $ npx create-react-app ruby-redux-login-frontend --template redux
+2. Remove extra files:
+   1. App.css
+   2. App.test.js
+   3. logo.svg
+   4. serviceWorker.js
+   5. Removed App.css, {logo} and counter import from App.js
+3. App.js file, removed all inner code.
+4. Update index.html <title> and manifest.json app names.
+5. Add React-Router-Dom, react-router, and Axios.
+   1. $ npm install react-router-dom
+   2. 
+   3. $ yarn add axios
+6. 
+
+
+
 
 ### Logic
 
+The sessions_controller does not have "standard" Restful routes. It creates a session by setting the status of "logged_in". `is_logged_in` verifies the logged in status and returns the current_user. or "logged_out" and returns the user that is found.
+
+user
+
+current_user
+
+logged_in
+
+logged_out
+
+status
+
+
+### Questions
+1. What is serviceWorker.js?
+2. What does manifest.json file do?
+3. What is React.Strictmode in index.html? 
+4. 

@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+	
 	def create
 		@user = User.find_by(email: session_params[:email])
 	  
@@ -16,7 +17,7 @@ class SessionsController < ApplicationController
 		end
 	end
 	
-	  def is_logged_in?
+	def is_logged_in?
 			if logged_in? && current_user
 			render json: {
 				logged_in: true,
@@ -30,7 +31,7 @@ class SessionsController < ApplicationController
 		end
 	end
 	
-	  def destroy
+	def destroy
 		logout!
 		render json: {
 			status: 200,
@@ -38,9 +39,10 @@ class SessionsController < ApplicationController
 		}
 	end
 	
-	  private
+	private
 	
 	def session_params
 		params.require(:user).permit(:username, :email, :password)
 	end
+	
 end
