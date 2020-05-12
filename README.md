@@ -33,4 +33,15 @@ I'm using this resource to create a Redux sign-up and login form.
    1. Updated key to '_ruby_redux_session_auth'. 
    2. **NOTE: The domain would need to change if deployed.
 8. #config/puma - Changed default port to 3001.
-9. 
+9. Create User model
+   1.  $ rails g model User username email password_digest
+10. Create database
+    1.  $ rails db:create && rails db:migrate
+11. `models/user.rb` file
+    1.  Add "has_secure_password"
+    2.  Add validations. See file for code.
+12. `config/routes` folder
+    1.  `resources :users, only: [:index, :show, :create]`
+        1.  **NOTE: May change this to allow :update and :destroy for users.**
+13. 
+    1.  
