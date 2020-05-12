@@ -40,8 +40,14 @@ I'm using this resource to create a Redux sign-up and login form.
 11. `models/user.rb` file
     1.  Add "has_secure_password"
     2.  Add validations. See file for code.
-12. `config/routes` folder
+12. `config/routes` file
     1.  `resources :users, only: [:index, :show, :create]`
         1.  **NOTE: May change this to allow :update and :destroy for users.**
 13. Create users_controller.rb file and add Restful routes. Only index show and created needed at this point in time. See file for code.
 14. Add helper methods: login!, loggged_in?, current_user, authorized_user?, logout to ApplicationController.rb. See file for code.
+15. Create sessions_controller.rb file and add Restful routes. See file for code.
+16. Add routes for session in routes.rb
+
+
+### Logic
+
