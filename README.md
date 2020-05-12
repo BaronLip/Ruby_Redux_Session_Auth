@@ -43,5 +43,5 @@ I'm using this resource to create a Redux sign-up and login form.
 12. `config/routes` folder
     1.  `resources :users, only: [:index, :show, :create]`
         1.  **NOTE: May change this to allow :update and :destroy for users.**
-13. 
-    1.  
+13. Create users_controller.rb file and add Restful routes. Only index show and created needed at this point in time. See file for code.
+14. Add helper methods: login!, loggged_in?, current_user, authorized_user?, logout to ApplicationController.rb. See file for code.
