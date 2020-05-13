@@ -75,7 +75,13 @@ I'm using this resource to create a Redux sign-up and login form.
 8. Create Home.js component using code from blog.
 9. Import Home component into App.js.
 10. Add Home component to <Route> equal to "./".
-11. 
+11. Create Login.js component using code from blog.
+12. Import Login component into App.js.
+13. Add Login component to <Route> equal to "./login".
+14. Create Signup.js component usig code from blog.
+15. Import Signup component into App.js.
+16. Add Signup component to <Route> equal to "./signup".
+17. 
 
 
 
