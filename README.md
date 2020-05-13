@@ -1,5 +1,10 @@
 # Ruby_Redux_Session_Auth
-I'm using this resource to create a Redux sign-up and login form.
+This repo is a practice in:
+1. Implementing session sign-up and login.
+2. Applying React patterns of state and props.
+3. Converting a React app to a Redux app.
+
+The initial React code is supplied by the blog post, link in Resources. Walking through that code is a great first step in understanding the combination of session auth and React. The larger portion of my focus is practicing the conversion to Redux.
 
 ### Resources
 • https://medium.com/how-i-get-it/react-with-rails-user-authentication-8977e98762f2
@@ -72,8 +77,9 @@ I'm using this resource to create a Redux sign-up and login form.
    1. Add `handleLogin()`, `handleLogout()`, `loginStatus()`, and `isLoggedIn` to App component.
    2. Add `componentDidMount()` lifecycle method to App component.
 7. Create Components Folder.
+   **
 8. Create Home.js component using code from blog.
-9. Import Home component into App.js.
+9.  Import Home component into App.js.
 10. Add Home component to <Route> equal to "./".
 11. Create Login.js component using code from blog.
 12. Import Login component into App.js.
