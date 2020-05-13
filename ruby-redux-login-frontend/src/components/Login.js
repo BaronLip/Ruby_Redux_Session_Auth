@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 class Login extends Component {
+	
 	constructor(props) {
 		super(props);
 		this.state = { 
@@ -10,6 +11,10 @@ class Login extends Component {
 		password: '',
 		errors: ''
 		};
+	}
+	
+	componentDidMount() {
+		return this.props.loggedInStatus ? this.redirect() : null
 	}
 	
 	handleChange = (event) => {
@@ -29,7 +34,7 @@ class Login extends Component {
 		password: password
 		}
 		
-	axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
+		axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
 		.then(response => {
 		if (response.data.logged_in) {
 			this.props.handleLogin(response.data)
@@ -44,7 +49,7 @@ class Login extends Component {
 	};
 	
 	redirect = () => {
-		this.props.history.push('/')
+		this.props.history.push('/success')
 	}
 	
 	handleErrors = () => {
@@ -53,13 +58,16 @@ class Login extends Component {
 			<ul>
 			{this.state.errors.map(error => {
 			return <li key={error}>{error}</li>
-			})}
+			})
+			}
 			</ul>
 		</div>
 		)
 	}
 	
-	render() { const {username, email, password} = this.state
+	render() {
+		const {username, email, password} = this.state;
+		console.log(this.props);
 		return (
 		<div>
 			<h1>Log In</h1>
@@ -71,7 +79,6 @@ class Login extends Component {
 				value={username}
 				onChange={this.handleChange}
 			/>
-			<br/>
 			<input
 				placeholder="email"
 				type="text"
@@ -79,7 +86,6 @@ class Login extends Component {
 				value={email}
 				onChange={this.handleChange}
 			/>
-			<br/>
 			<input
 				placeholder="password"
 				type="password"
@@ -87,20 +93,22 @@ class Login extends Component {
 				value={password}
 				onChange={this.handleChange}
 			/>
-			<br/>
 			<button placeholder="submit" type="submit">
 				Log In
 			</button>
 			<div>
-			or <Link to='/signup'>sign up</Link>
+				or <Link to='/signup'>sign up</Link>
 			</div>
 			
 			</form>
 			<div>
-			{ this.state.errors ? this.handleErrors() : null }
+			{
+				this.state.errors ? this.handleErrors() : null
+			}
 			</div>
 		</div>
 		);
 	}
 }
+
 export default Login;

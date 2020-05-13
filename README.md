@@ -111,4 +111,11 @@ status
 2. What does manifest.json file do?
 3. What is React.Strictmode in index.html? 
 4. Double back to understand and create a Higher Order Component to make Signup and Login forms more DRY.
-5. 
+5. How does `redirect` syntax work?
+6. From App component, should I change loggedInStatus prop to be isLoggedIn to match property?
+7. After Signing up or Logging in, Redirect to a success page instead.
+8. Add a little navigation...
+9. Add a logout button to Success component.
+
+### Things I learned
+* 
