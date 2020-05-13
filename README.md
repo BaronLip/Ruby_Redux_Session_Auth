@@ -81,7 +81,8 @@ I'm using this resource to create a Redux sign-up and login form.
 14. Create Signup.js component usig code from blog.
 15. Import Signup component into App.js.
 16. Add Signup component to <Route> equal to "./signup".
-17. 
+    **START TO BUILD OUT STATE**
+17.    
 
 
 

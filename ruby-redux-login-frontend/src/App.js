@@ -15,6 +15,9 @@ class App extends Component {
 		};
 	}
 
+	componentDidMount() {
+		this.loginStatus();
+	}
 
 	handleLogin = (data) => {
 		this.setState({
@@ -34,7 +37,7 @@ class App extends Component {
 		axios.get('http://localhost:3001/logged_in', 
 	   	{withCredentials: true})
 		.then(response => {
-			console.log(response);
+			console.log(response.data);
 			if (response.data.logged_in) {
 				this.handleLogin(response)
 			} else {
@@ -46,17 +49,32 @@ class App extends Component {
 
 	render() {
 		return (
-		<div className="App">
+		  	<div>
 			<BrowserRouter>
 				<Switch>
-					<Route exact path="/" component={Home} />
-					<Route exact path="/signup" component={Signup} />
-					<Route exact path="/login" component={Login} />
+					<Route 
+						exact path='/' 
+						render={props => (
+						<Home {...props} loggedInStatus={this.state.isLoggedIn}/>
+					)}
+					/>
+					<Route 
+						exact path='/login' 
+						render={props => (
+						<Login {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
+					)}
+					/>
+					<Route 
+						exact path='/signup' 
+						render={props => (
+						<Signup {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
+					)}
+					/>
 				</Switch>
 			</BrowserRouter>
-		</div>
+		  	</div>
 		);
-	}
+	  }
 }
 
 export default App;
