@@ -56,14 +56,21 @@ I'm using this resource to create a Redux sign-up and login form.
    2. App.test.js
    3. logo.svg
    4. serviceWorker.js
-   5. Removed App.css, {logo} and counter import from App.js
+   5. Remove App.css, {logo} and counter import from App.js
+   6. Within store.js file
+      1. Remove import counterReducer.
+   7. Within index.js file
+      1. Remove import for serviceWorker.
+      2. Remove "serviceWorker.unregister();" from index.js
 3. App.js file, removed all inner code.
 4. Update index.html <title> and manifest.json app names.
 5. Add React-Router-Dom, react-router, and Axios.
-   1. $ npm install react-router-dom
-   2. 
-   3. $ yarn add axios
-6. 
+   1. $ npm install -S react-router-dom (Make sure to include "-S".)
+      1. The blog states to install react-router separately but docs show react-router-dom to encompass react-router for web application.
+   2. $ npm install axios --save (Make sure to include "--save".)
+6. Convert App.js to be a class component in order for it to have local state.
+   1. Add `handleLogin()`, `handleLogout()`, `loginStatus()`, and `isLoggedIn` to App component.
+   2. Add `componentDidMount()` lifecycle method to App component.
 
 
 
@@ -71,6 +78,10 @@ I'm using this resource to create a Redux sign-up and login form.
 ### Logic
 
 The sessions_controller does not have "standard" Restful routes. It creates a session by setting the status of "logged_in". `is_logged_in` verifies the logged in status and returns the current_user. or "logged_out" and returns the user that is found.
+
+App.js serves as a router to render all other components to the DOM. It will not render itself. 
+
+It will manage authentication state locally...
 
 user
 
