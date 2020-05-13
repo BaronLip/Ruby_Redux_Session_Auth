@@ -71,6 +71,11 @@ I'm using this resource to create a Redux sign-up and login form.
 6. Convert App.js to be a class component in order for it to have local state.
    1. Add `handleLogin()`, `handleLogout()`, `loginStatus()`, and `isLoggedIn` to App component.
    2. Add `componentDidMount()` lifecycle method to App component.
+7. Create Components Folder.
+8. Create Home.js component using code from blog.
+9. Import Home component into App.js.
+10. Add Home component to <Route> equal to "./".
+11. 
 
 
 
@@ -98,4 +103,5 @@ status
 1. What is serviceWorker.js?
 2. What does manifest.json file do?
 3. What is React.Strictmode in index.html? 
-4. 
+4. Double back to understand and create a Higher Order Component to make Signup and Login forms more DRY.
+5. 
