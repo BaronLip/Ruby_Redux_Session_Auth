@@ -74,38 +74,37 @@ class Login extends Component {
 		<div>
 			<h1>Log In</h1>
 			<form onSubmit={this.handleSubmit}>
-			<input
-				placeholder="username"
-				type="text"
-				name="username"
-				value={username}
-				onChange={this.handleChange}
-			/>
-			<br/>
-			<input
-				placeholder="email"
-				type="text"
-				name="email"
-				value={email}
-				onChange={this.handleChange}
-			/>
-			<br/>
-			<input
-				placeholder="password"
-				type="password"
-				name="password"
-				value={password}
-				onChange={this.handleChange}
-			/>
-			<br/>
-			<button placeholder="submit" type="submit">
-				Log In
-			</button>
-			<br/>
-			<div>
-				or <Link to='/signup'>sign up</Link>
-			</div>
-			
+				<input
+					placeholder="username"
+					type="text"
+					name="username"
+					value={username}
+					onChange={this.handleChange}
+				/>
+				<br/>
+				<input
+					placeholder="email"
+					type="text"
+					name="email"
+					value={email}
+					onChange={this.handleChange}
+				/>
+				<br/>
+				<input
+					placeholder="password"
+					type="password"
+					name="password"
+					value={password}
+					onChange={this.handleChange}
+				/>
+				<br/>
+				<button placeholder="submit" type="submit">
+					Log In
+				</button>
+				<br/>
+				<div>
+					or <Link to='/signup'>sign up</Link>
+				</div>
 			</form>
 			<div>
 			{
