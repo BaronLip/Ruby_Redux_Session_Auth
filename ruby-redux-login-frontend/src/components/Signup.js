@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import { Link, Redirect } from 'react-router-dom'
+
 class Signup extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { 
-		username: '',
-		email: '',
-		password: '',
-		password_confirmation: '',
-		errors: ''
+			username: '',
+			email: '',
+			password: '',
+			password_confirmation: '',
+			errors: ''
 		};
 	}
 	
@@ -20,15 +22,17 @@ class Signup extends Component {
 	};
 	
 	handleSubmit = (event) => {
-		event.preventDefault()
-		const {username, email, password, password_confirmation} = this.state
+		event.preventDefault();
+		const {username, email, password, password_confirmation} = this.state;
+		console.log(this.state);
 		let user = {
-		username: username,
-		email: email,
-		password: password,
-		password_confirmation: password_confirmation
+			username: username,
+			email: email,
+			password: password,
+			password_confirmation: password_confirmation
 		}
-	
+		console.log(user);
+		
 		axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
 		.then(response => {
 		if (response.data.status === 'created') {
@@ -45,22 +49,24 @@ class Signup extends Component {
 	};
 	
 	redirect = () => {
-		this.props.history.push('/')
+		this.props.history.push('/success')
 	}
 	
 	handleErrors = () => {
 		return (
 		<div>
-			<ul>{this.state.errors.map((error) => {
-			return <li key={error}>{error}</li>
-			})}</ul> 
+			<ul>{this.state.errors.map( (error) => {
+				return <li key={error}>{error}</li>
+			})}
+			</ul>
+			<Link to='/login'>Log In</Link>
 		</div>
 		)
 	}
 	
 	render() {
 		const {username, email, password, password_confirmation} = this.state;
-		console.log(this.state);
+		
 		return (
 			<div>
 				<h1>Sign Up</h1>
