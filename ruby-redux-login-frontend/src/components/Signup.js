@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
+let user;
 
 class Signup extends Component {
 	constructor(props) {
@@ -25,7 +27,7 @@ class Signup extends Component {
 		event.preventDefault();
 		const {username, email, password, password_confirmation} = this.state;
 		console.log(this.state);
-		let user = {
+		user = {
 			username: username,
 			email: email,
 			password: password,
@@ -38,7 +40,9 @@ class Signup extends Component {
 		if (response.data.status === 'created') {
 			console.log(response.data);
 			this.props.handleLogin(response.data);
-			this.redirect();
+			// // Prior code.
+			// this.redirect();
+			this.props.history.push('/login', {user: user})
 		} else {
 			this.setState({
 			errors: response.data.errors
@@ -48,9 +52,10 @@ class Signup extends Component {
 		.catch(error => console.log('api errors:', error))
 	};
 	
-	redirect = () => {
-		this.props.history.push('/success')
-	}
+	// // Prior code.
+	// redirect = () => {
+	// 	this.props.history.push('/success')
+	// }
 	
 	handleErrors = () => {
 		return (

@@ -71,34 +71,32 @@ Before converting into a Redux app, additional functionality such as logging out
 7. Within index.js file
 	1. Remove import for serviceWorker.
 	2. Remove "serviceWorker.unregister();" from index.js
-3. App.js file, removed all inner code.
-4. Update index.html <title> and manifest.json app names.
-5. Add React-Router-Dom, react-router, and Axios.
-1. $ npm install -S react-router-dom (Make sure to include "-S".)
+8. App.js file, removed all inner code.
+9. Update index.html <title> and manifest.json app names.
+10. Add React-Router-Dom, react-router, and Axios.
+11. $ npm install -S react-router-dom (Make sure to include "-S".)
 	1. The blog states to install react-router separately but docs show react-router-dom to encompass react-router for web application.
-2. $ npm install axios --save (Make sure to include "--save".)
-6. Convert App.js to be a class component in order for it to have local state.
-1. Add `handleLogin()`, `handleLogout()`, `loginStatus()`, and `isLoggedIn` to App component.
-2. Add `componentDidMount()` lifecycle method to App component.
-7. Create Components Folder.
-**
-8. Create Home.js component using code from blog.
-9.  Import Home component into App.js.
-10. Add Home component to <Route> equal to "./".
-11. Create Login.js component using code from blog.
-12. Import Login component into App.js.
-13. Add Login component to <Route> equal to "./login".
-14. Create Signup.js component usig code from blog.
-15. Import Signup component into App.js.
-16. Add Signup component to <Route> equal to "./signup".
+12. $ npm install axios --save (Make sure to include "--save".)
+13. Convert App.js to be a class component in order for it to have local state.
+14. Add `handleLogin()`, `handleLogout()`, `loginStatus()`, and `isLoggedIn` to App component.
+15. Add `componentDidMount()` lifecycle method to App component.
+16. Create Components Folder.
+17. Create Home.js component using code from blog.
+18.  Import Home component into App.js.
+19. Add Home component to <Route> equal to "./".
+20. Create Login.js component using code from blog.
+21. Import Login component into App.js.
+22. Add Login component to <Route> equal to "./login".
+23. Create Signup.js component usig code from blog.
+24. Import Signup component into App.js.
+25. Add Signup component to <Route> equal to "./signup".
 	**END BLOG POST CODE**
 17. Added Success component and changed redirect, after signup or login to it.
 18. Added Login link to Signup.js when handleErrors() is called.
 19. Added logout link to Success page.
-20. 
-
-
-
+20. Removed redirect() function from Signup and Login components.
+21. Adjusted code to push into `props.history` and redirect to Success component.
+22. Added user object as a props to the Success component.
 
 ### Logic
 The sessions_controller does not have "standard" Restful routes. It creates a session by setting the status of "logged_in". `is_logged_in` verifies the logged in status and returns the current_user. or "logged_out" and returns the user that is found.
@@ -121,19 +119,26 @@ status
 ### Questions
 1. What is serviceWorker.js?
 2. What does manifest.json file do?
-3. What is React.Strictmode in index.html? 
+3. What is React.Strictmode in index.html?
 4. Double back to understand and create a Higher Order Component to make Signup and Login forms more DRY.
-5. How does `redirect` syntax work?
-6. From App component, should I change loggedInStatus prop to be isLoggedIn to match property?
-7. When using render props, is the render method the same render method as React's render method? _No, the render is just like any property that would be passed. _
-8. *Signup.js line 41. How does the User get passed from one component to the next? Or, Why isn't the User being passed from Signup to Login. Maybe even Login to Home?
+5. How does `redirect` syntax work? _Ended up pushing into props.history. With react-router, every immediate child component of react-router will receive the prop of "history"._
+6. From App component, should I change loggedInStatus prop to be isLoggedIn to match property? _This is just preference._
+7. When using render props, is the render method the same render method as React's render method? _No, the render is just like any property that would be passed._
+8. ~~*Signup.js line 41. How does the User get passed from one component to the next? Or, Why isn't the User being passed from Signup to Login. Maybe even Login to Home?~~
    * Seems like there are a number ways to redirect with React: https://dev.to/projectescape/programmatic-navigation-in-react-3p1l
      1. Using `Redirect` imported from react-router-dom.
      2. `useHistory` hook.
      3. `props.history` combined with `withRouter`.
+     4. `this.props.history.push( route, object)` _This is the option used._
 
 
 ### Things I learned/practiced
 * Creating new branches in Git.
 * When using render={ props => ()}, render is a prop with a value of a function using the props as a parameter. It returns a component with all the props of the parent component.
-* Learning how to redirect NOW...
+* Learning how to redirect while maintaining state NOW...
+  * Components that are an immediate child of the <Route> component receives 'history' as a prop.
+  * When pushing into `this.props.history` the first parameter is the route path. The optional second parameter can be any object. In this case it is the user object. 
+    * The receiving component receives the object as under `props.location.state.objectName`.
+    * Use the constructor of the component to set state as the component renders.
+* 
+

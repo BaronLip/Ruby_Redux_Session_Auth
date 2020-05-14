@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
 class Success extends Component {
+	
 	constructor(props) {
 		super(props);
+		// debugger
 		this.state = {
-			isLoggedIn: false,
-			user: this.props.location.state
+			isLoggedIn: this.props.location.state.user.logged_in,
+			user: this.props.location.state.user.user
 		}
 	}
 
-	
 
 	render () {
 		console.log(this.state)

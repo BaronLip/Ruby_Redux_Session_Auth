@@ -36,21 +36,23 @@ class Login extends Component {
 		
 		axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
 		.then(response => {
-		if (response.data.logged_in) {
-			this.props.handleLogin(response.data)
-			this.redirect()
-		} else {
-			this.setState({
-			errors: response.data.errors
-			})
-		}
+			if (response.data.logged_in) {
+				this.props.handleLogin(response.data);
+				console.log(response.data);
+				// this.redirect();
+				this.props.history.push('/success', {user: response.data})
+			} else {
+				this.setState({
+				errors: response.data.errors
+				})
+			}
 		})
 		.catch(error => console.log('api errors:', error))
 	};
 	
-	redirect = () => {
-		this.props.history.push('/success')
-	}
+	// redirect = () => {
+	// 	this.props.history.push('/')
+	// }
 	
 	handleErrors = () => {
 		return (
@@ -79,6 +81,7 @@ class Login extends Component {
 				value={username}
 				onChange={this.handleChange}
 			/>
+			<br/>
 			<input
 				placeholder="email"
 				type="text"
@@ -86,6 +89,7 @@ class Login extends Component {
 				value={email}
 				onChange={this.handleChange}
 			/>
+			<br/>
 			<input
 				placeholder="password"
 				type="password"
@@ -93,9 +97,11 @@ class Login extends Component {
 				value={password}
 				onChange={this.handleChange}
 			/>
+			<br/>
 			<button placeholder="submit" type="submit">
 				Log In
 			</button>
+			<br/>
 			<div>
 				or <Link to='/signup'>sign up</Link>
 			</div>
