@@ -32,8 +32,9 @@ class Signup extends Component {
 		axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
 		.then(response => {
 		if (response.data.status === 'created') {
-			this.props.handleLogin(response.data)
-			this.redirect()
+			console.log(response.data);
+			this.props.handleLogin(response.data);
+			this.redirect();
 		} else {
 			this.setState({
 			errors: response.data.errors

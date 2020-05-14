@@ -6,6 +6,10 @@ This repo is a practice in:
 
 The initial React code is supplied by the blog post, link in Resources. Walking through that code is a great first step in understanding the combination of session auth and React. The larger portion of my focus is practicing the conversion to Redux.
 
+Knowing React will work without Redux conventions, I started this app with Redux template to save conversion issues later. 
+
+Before converting into a Redux app, additional functionality such as logging out and redirects were added. This is in the works now...
+
 ### Resources
 • https://medium.com/how-i-get-it/react-with-rails-user-authentication-8977e98762f2
 
@@ -17,7 +21,7 @@ The initial React code is supplied by the blog post, link in Resources. Walking 
    1. $ ruby -v  (ruby 2.6.1p33 (2019-01-30 revision 66950) [x86_64-darwin18])
 3. Decided to upgrade to Ruby 6.
    1. $ brew install ruby (Homebrew updated but Ruby did not.)
-   2. Went through a couple suggest errors:
+   2. Went through a couple suggested errors:
       1. $ brew link highlight
       2. $ brew link gettext
       3. $ brew link node (This one would not work.)
@@ -87,8 +91,9 @@ The initial React code is supplied by the blog post, link in Resources. Walking 
 14. Create Signup.js component usig code from blog.
 15. Import Signup component into App.js.
 16. Add Signup component to <Route> equal to "./signup".
-    **START TO BUILD OUT STATE**
-17.    
+    **END BLOG POST CODE**
+17. Added Success component and changed redirect, after signup or login to it.
+18.    
 
 
 
@@ -123,5 +128,6 @@ status
 8. Add a little navigation...
 9. Add a logout button to Success component.
 
-### Things I learned
+### Things I learned/practiced
+* Creating new branches in Git.
 * 
