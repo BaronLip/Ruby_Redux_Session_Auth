@@ -97,6 +97,10 @@ Before converting into a Redux app, additional functionality such as logging out
 20. Removed redirect() function from Signup and Login components.
 21. Adjusted code to push into `props.history` and redirect to Success component.
 22. Added user object as a props to the Success component.
+23. Added logout link and method to Success component.
+24. Created three "paths" to sign in: the included code, immediate Success, and requiring Login after Signup. See comments in Signup.js.
+
+
 
 ### Logic
 The sessions_controller does not have "standard" Restful routes. It creates a session by setting the status of "logged_in". `is_logged_in` verifies the logged in status and returns the current_user. or "logged_out" and returns the user that is found.
@@ -130,6 +134,7 @@ status
      2. `useHistory` hook.
      3. `props.history` combined with `withRouter`.
      4. `this.props.history.push( route, object)` _This is the option used._
+9. What happened to "this" when making a function call? _Make sure `.bind(this)` for each function, in the constructor of the component._
 
 
 ### Things I learned/practiced
@@ -140,5 +145,6 @@ status
   * When pushing into `this.props.history` the first parameter is the route path. The optional second parameter can be any object. In this case it is the user object. 
     * The receiving component receives the object as under `props.location.state.objectName`.
     * Use the constructor of the component to set state as the component renders.
-* 
+* Binding "this" to a function call for React.
+* `componentWillMount()` is depreciated. Surprised it was being used but could see why. 
 

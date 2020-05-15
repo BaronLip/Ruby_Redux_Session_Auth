@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 class Login extends Component {
 	
 	constructor(props) {
@@ -13,9 +13,11 @@ class Login extends Component {
 		};
 	}
 	
-	componentDidMount() {
-		return this.props.loggedInStatus ? this.redirect() : null
-	}
+	// Previously use componentWillMount() which is now depreciated.
+	// In order to not immediately redirect after signup, comment this out. 
+	// componentDidMount() {
+	// 	return this.props.loggedInStatus ? this.redirect() : null
+	// }
 	
 	handleChange = (event) => {
 		const {name, value} = event.target
@@ -38,7 +40,7 @@ class Login extends Component {
 		.then(response => {
 			if (response.data.logged_in) {
 				this.props.handleLogin(response.data);
-				console.log(response.data);
+				// // Prior code.
 				// this.redirect();
 				this.props.history.push('/success', {user: response.data})
 			} else {
@@ -49,7 +51,8 @@ class Login extends Component {
 		})
 		.catch(error => console.log('api errors:', error))
 	};
-	
+
+	// Prior code tied to componentWillMount()/ componentDidMount().
 	// redirect = () => {
 	// 	this.props.history.push('/')
 	// }
@@ -58,10 +61,10 @@ class Login extends Component {
 		return (
 		<div>
 			<ul>
-			{this.state.errors.map(error => {
-			return <li key={error}>{error}</li>
-			})
-			}
+				{this.state.errors.map(error => {
+					return <li key={error}>{error}</li>
+					})
+				}
 			</ul>
 		</div>
 		)
@@ -69,7 +72,7 @@ class Login extends Component {
 	
 	render() {
 		const {username, email, password} = this.state;
-		console.log(this.state);
+		console.log(this.props);
 		return (
 		<div>
 			<h1>Log In</h1>
@@ -106,10 +109,9 @@ class Login extends Component {
 					or <Link to='/signup'>sign up</Link>
 				</div>
 			</form>
+			
 			<div>
-			{
-				this.state.errors ? this.handleErrors() : null
-			}
+				{ this.state.errors ? this.handleErrors() : null }
 			</div>
 		</div>
 		);
