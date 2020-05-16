@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-
-// let user;
+import { connect } from 'react-redux';
 
 class Signup extends Component {
 	constructor(props) {
@@ -126,4 +125,15 @@ class Signup extends Component {
 	}
 }
 
-export default Signup;
+const mapStateToProps = (state) => {
+	console.log(state);
+	return {
+		
+	}
+}
+
+// const mapDispatchToProps = 
+
+// Use the connect() in conjunction with mapStateToProps & mapDispatchToProps to connect the Redux Store to a React component.
+export default connect(mapStateToProps)(Signup)
+// export default Signup;

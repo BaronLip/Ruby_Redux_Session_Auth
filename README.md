@@ -101,7 +101,8 @@ Before converting into a Redux app, additional functionality such as logging out
 24. Created three "paths" to sign in: the included code, immediate Success, and requiring Login after Signup. See comments in Signup.js.
 25. Created "Redux" Branch.
 26. Create Sessions and Users, reducers and actions folders.
-27. 
+27. Import usersReducer to store.js and add to reducer object. 
+28. Connect the 
 
 
 
@@ -138,6 +139,7 @@ status
      3. `props.history` combined with `withRouter`.
      4. `this.props.history.push( route, object)` _This is the option used._
 9. What happened to "this" when making a function call? _Make sure `.bind(this)` for each function, in the constructor of the component._
+10. What are the determining factors of creating state from React to Redux? For this app, I'm basing the reducers by the backend controllers. Since there is a sessions and user controller, there will be a sessions and users reducers.
 
 
 ### Things I learned/practiced
@@ -149,5 +151,8 @@ status
     * The receiving component receives the object as under `props.location.state.objectName`.
     * Use the constructor of the component to set state as the component renders.
 * Binding "this" to a function call for React.
-* `componentWillMount()` is depreciated. Surprised it was being used but could see why. 
+* `componentWillMount()` is depreciated. Surprised it was being used but could see why.
+* Converting React app to Redux conventions.
+* Making an action_types file prevents the requirement of having to change the "string" everywhere in the app. Just look it up in the action_types file and update. (I still find this a bit odd cause since the actionName and the string are the same. If one is changed, it would no longer match and could sacrifice readability.)
+* "Container" refers to a component that is connected to the Redux Store.
 
