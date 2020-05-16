@@ -22,74 +22,74 @@ Before converting into a Redux app, additional functionality such as logging out
 3. Decided to upgrade to Ruby 6.
 1. $ brew install ruby (Homebrew updated but Ruby did not.)
 2. Went through a couple suggested errors:
-	1. $ brew link highlight
-	2. $ brew link gettext
-	3. $ brew link node (This one would not work.)
+   1. $ brew link highlight
+   2. $ brew link gettext
+   3. $ brew link node (This one would not work.)
 3. $ **rvm install ruby --latest** (Use this to install latest Ruby version.)
 4. Also needed to update RVM (Ruby version manager).
-1. $ rvm get stable (Seems to have worked...).
+   1. $ rvm get stable (Seems to have worked...).
 5. Add gems.
-1. #Gemfile
+6. #Gemfile
 	1. gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 		1. $ gem install bcrypt
 	2. gem 'rack-cors', '~> 1.1', '>= 1.1.1'
 		1. $ gem install rack-cors
 	3. gem 'pry', '~> 0.13.1'
 		1. $ gem install pry
-6. Create cors.rb file in config/initializers folder. See file for code.
-1. **NOTE: The origins address will need to change if deployed.**
-7. Create session_store.rb file in config/initializers folder. See file for code.
-1. Updated key to '_ruby_redux_session_auth'. 
-2. **NOTE: The domain would need to change if deployed.
-8. #config/puma - Changed default port to 3001.
-9. Create User model
-1.  $ rails g model User username email password_digest
-10. Create database
+7.  Create cors.rb file in config/initializers folder. See file for code.
+8.  **NOTE: The origins address will need to change if deployed.**
+9.  Create session_store.rb file in config/initializers folder. See file for code.
+10. Updated key to '_ruby_redux_session_auth'. 
+11. **NOTE: The domain would need to change if deployed.
+12. #config/puma - Changed default port to 3001.
+13. Create User model
+14. $ rails g model User username email password_digest
+15. Create database
 	1.  $ rails db:create && rails db:migrate
-11. `models/user.rb` file
+16. `models/user.rb` file
 	1.  Add "has_secure_password"
 	2.  Add validations. See file for code.
-12. `config/routes` file
+17. `config/routes` file
 	1.  `resources :users, only: [:index, :show, :create]`
 		1.  **NOTE: May change this to allow :update and :destroy for users.**
-13. Create users_controller.rb file and add Restful routes. Only index show and created needed at this point in time. See file for code.
-14. Add helper methods: login!, loggged_in?, current_user, authorized_user?, logout to ApplicationController.rb. See file for code.
-15. Create sessions_controller.rb file and add Restful routes. See file for code.
-16. Add routes for session in routes.rb
+18. Create users_controller.rb file and add Restful routes. Only index show and created needed at this point in time. See file for code.
+19. Add helper methods: login!, loggged_in?, current_user, authorized_user?, logout to ApplicationController.rb. See file for code.
+20. Create sessions_controller.rb file and add Restful routes. See file for code.
+21. Add routes for session in routes.rb
 
 ### Frontend Process
 1. Create React app with Redux and Redux Tool Kit.
-1. $ npx create-react-app ruby-redux-login-frontend --template redux
+   1. $ npx create-react-app ruby-redux-login-frontend --template redux
 2. Remove extra files:
-1. App.css
-2. App.test.js
-3. logo.svg
-4. serviceWorker.js
-5. Remove App.css, {logo} and counter import from App.js
-6. Within store.js file
+   1. App.css
+   2. App.test.js
+   3. logo.svg
+3. serviceWorker.js
+4. Remove App.css, {logo} and counter import from App.js
+5. Within store.js file
 	1. Remove import counterReducer.
-7. Within index.js file
+6. Within index.js file
 	1. Remove import for serviceWorker.
 	2. Remove "serviceWorker.unregister();" from index.js
-8. App.js file, removed all inner code.
-9. Update index.html <title> and manifest.json app names.
-10. Add React-Router-Dom, react-router, and Axios.
-11. $ npm install -S react-router-dom (Make sure to include "-S".)
+7.  App.js file, removed all inner code.
+8.  Update index.html <title> and manifest.json app names.
+9.  Add React-Router-Dom, react-router, and Axios.
+10. $ npm install -S react-router-dom (Make sure to include "-S".)
 	1. The blog states to install react-router separately but docs show react-router-dom to encompass react-router for web application.
-12. $ npm install axios --save (Make sure to include "--save".)
-13. Convert App.js to be a class component in order for it to have local state.
-14. Add `handleLogin()`, `handleLogout()`, `loginStatus()`, and `isLoggedIn` to App component.
-15. Add `componentDidMount()` lifecycle method to App component.
-16. Create Components Folder.
-17. Create Home.js component using code from blog.
-18.  Import Home component into App.js.
-19. Add Home component to <Route> equal to "./".
-20. Create Login.js component using code from blog.
-21. Import Login component into App.js.
-22. Add Login component to <Route> equal to "./login".
-23. Create Signup.js component usig code from blog.
-24. Import Signup component into App.js.
-25. Add Signup component to <Route> equal to "./signup".
+11. $ npm install axios --save (Make sure to include "--save".)
+12. Convert App.js to be a class component in order for it to have local state.
+13. Add `handleLogin()`, `handleLogout()`, `loginStatus()`, and `isLoggedIn` to App component.
+14. Add `componentDidMount()` lifecycle method to App component.
+15. Create Components Folder.
+16. Create Home.js component using code from blog.
+17.  Import Home component into App.js.
+18. Add Home component to <Route> equal to "./".
+19. Create Login.js component using code from blog.
+20. Import Login component into App.js.
+21. Add Login component to <Route> equal to "./login".
+22. Create Signup.js component usig code from blog.
+23. Import Signup component into App.js.
+24. Add Signup component to <Route> equal to "./signup".
 	**END BLOG POST CODE**
 17. Added Success component and changed redirect, after signup or login to it.
 18. Added Login link to Signup.js when handleErrors() is called.
@@ -99,6 +99,9 @@ Before converting into a Redux app, additional functionality such as logging out
 22. Added user object as a props to the Success component.
 23. Added logout link and method to Success component.
 24. Created three "paths" to sign in: the included code, immediate Success, and requiring Login after Signup. See comments in Signup.js.
+25. Created "Redux" Branch.
+26. Create Sessions and Users, reducers and actions folders.
+27. 
 
 
 

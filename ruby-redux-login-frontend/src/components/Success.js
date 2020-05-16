@@ -28,6 +28,7 @@ class Success extends Component {
 	}
 
 	render () {
+		console.log(this.state.user)
 		return (
 			<div>
 				<p>Good job! You have Signed in.</p>
