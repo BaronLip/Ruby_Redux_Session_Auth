@@ -8,13 +8,15 @@ const initialState = {
 
 const usersReducer = (state = initialState, action) => {
 	console.log(state);
-	return state;
-	// switch (action.type) {
-	// 	case LOGIN:
-	// 		return {
-	// 			user: action.user
-	// 		}
-	// }
+	// return state;
+	switch (action.type) {
+		case "SIGNUP":
+			return {
+				user: action.user
+			}
+	default:
+		return state;
+	}
 }
 
 export default usersReducer;

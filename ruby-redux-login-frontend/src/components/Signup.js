@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
+import { signup } from '../actions/usersActions'
 
 class Signup extends Component {
 	constructor(props) {
@@ -18,7 +18,7 @@ class Signup extends Component {
 	handleChange = (event) => {
 		const {name, value} = event.target
 		this.setState({
-		[name]: value
+			[name]: value
 		})
 	};
 	
@@ -31,29 +31,31 @@ class Signup extends Component {
 			email: email,
 			password: password,
 			password_confirmation: password_confirmation
-		}
-		console.log(user);
+		};
+		console.log("Signup User", user);
+
+		this.props.signup(user);
 		
-		axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
-		.then(response => {
-		if (response.data.status === 'created') {
-			console.log(response.data);
-			this.props.handleLogin(response.data);
-			// // Opt1 Prior code.
-			// this.redirect();
+		// axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
+		// .then(response => {
+		// if (response.data.status === 'created') {
+		// 	console.log(response.data);
+		// 	this.props.handleLogin(response.data);
+		// 	// // Opt1 Prior code.
+		// 	// this.redirect();
 
-			// // Opt2 Goes directly to Success after signup.
-			// this.props.history.push('/success', {user: user});
+		// 	// // Opt2 Goes directly to Success after signup.
+		// 	// this.props.history.push('/success', {user: user});
 
-			// // Opt3 Goes to login page. Requires login, Then success confirmation.
-			this.props.history.push('/login', {user: user}); // `{user: user}` is not necessary but is used to test code.
-		} else {
-			this.setState({
-			errors: response.data.errors
-			})
-		}
-		})
-		.catch(error => console.log('api errors:', error))
+		// 	// // Opt3 Goes to login page. Requires login, Then success confirmation.
+		// 	this.props.history.push('/login', {user: user}); // `{user: user}` is not necessary but is used to test code.
+		// } else {
+		// 	this.setState({
+		// 		errors: response.data.errors
+		// 	})
+		// }
+		// })
+		// .catch(error => console.log('api errors:', error))
 	};
 	
 	// // Opt1 Prior code.
@@ -128,12 +130,18 @@ class Signup extends Component {
 const mapStateToProps = (state) => {
 	console.log(state);
 	return {
-		
+		// session: state["session"]
+		session: state.session,
+		user: state.user
 	}
 }
 
-// const mapDispatchToProps = 
+const mapDispatchToProps = (dispatch) =>{
+	return {
+		signup: signup
+	}
+}
 
 // Use the connect() in conjunction with mapStateToProps & mapDispatchToProps to connect the Redux Store to a React component.
-export default connect(mapStateToProps)(Signup)
+export default connect(mapStateToProps, mapDispatchToProps)(Signup)
 // export default Signup;
