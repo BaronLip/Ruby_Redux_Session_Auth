@@ -144,7 +144,9 @@ Before converting into a Redux app, additional functionality such as logging out
 9. What happened to "this" when making a function call? _Make sure `.bind(this)` for each function, in the constructor of the component._
 10. What are the determining factors of creating state from React to Redux? For this app, I'm basing the reducers by the backend controllers. Since there is a sessions and user controller, there will be a sessions and users reducers.
 11. Does react-router-dom not have "history" built in? Why is "connected-react-router" necessary for history in Redux?
-_In the process of just using react-router-dom only. Based on "https://reacttraining.com/react-router/web/guides/redux-integration", need to also utilize withRouter for each component connected to Redux.
+_In the process of just using react-router-dom only. Based on "https://reacttraining.com/react-router/web/guides/redux-integration", need to also utilize withRouter for each component connected to Redux._
+12. Is it necessary to use Thunk or is ES7 Async/Await the same result?
+13. 
 
 ### Things I learned/practiced
 * Creating new branches in Git.
@@ -161,4 +163,5 @@ _In the process of just using react-router-dom only. Based on "https://reacttrai
 * "Container" refers to a component that is connected to the Redux Store, a stateful component.
 * With Redux, <Router> needs to be wrapped in <Provider> in order for the application to have the proper routing.
 * **Either create a React app or a Redux app. Converting from React to Redux is very not fun.**
+* THUNK...this is still going to take some practice.
 
