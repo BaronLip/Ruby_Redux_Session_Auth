@@ -143,8 +143,8 @@ Before converting into a Redux app, additional functionality such as logging out
      4. `this.props.history.push( route, object)` _This is the option used._
 9. What happened to "this" when making a function call? _Make sure `.bind(this)` for each function, in the constructor of the component._
 10. What are the determining factors of creating state from React to Redux? For this app, I'm basing the reducers by the backend controllers. Since there is a sessions and user controller, there will be a sessions and users reducers.
-11. Does React-Router-Dom not have "history" built in? Why is "connected-react-router" necessary for history in Redux?
-_
+11. Does react-router-dom not have "history" built in? Why is "connected-react-router" necessary for history in Redux?
+_In the process of just using react-router-dom only. Based on "https://reacttraining.com/react-router/web/guides/redux-integration", need to also utilize withRouter for each component connected to Redux.
 
 ### Things I learned/practiced
 * Creating new branches in Git.

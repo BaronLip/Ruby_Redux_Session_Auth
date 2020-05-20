@@ -1,8 +1,6 @@
 // External imports
 import axios from 'axios'
 
-// const browserHistory = createBrowserHistory();
-
 // Action Creator(s)
 export const SIGNUP = "SIGNUP"
 

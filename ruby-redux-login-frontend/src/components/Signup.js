@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { signup } from '../actions/usersActions'
 
@@ -144,5 +144,5 @@ const mapDispatchToProps = (dispatch) =>{
 }
 
 // Use the connect() in conjunction with mapStateToProps & mapDispatchToProps to connect the Redux Store to a React component.
-export default connect(mapStateToProps, mapDispatchToProps)(Signup)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Signup))
 // export default Signup;
