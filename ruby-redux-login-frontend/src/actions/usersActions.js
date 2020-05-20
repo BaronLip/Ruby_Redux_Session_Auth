@@ -11,9 +11,9 @@ export const SIGNUP = "SIGNUP"
 // 	return { type: SIGNUP, user };
 // }
 
-const redirect = (user) => {
-	browserHistory.push('/login', user);
-}
+// const redirect = (user) => {
+// 	history.push('/login', user);
+// }
 
 export const signup = (user) => {
 	console.log(user);
@@ -26,7 +26,7 @@ export const signup = (user) => {
 		if (response.data.status === 'created') {
 			let user = response.data.user;
 			// window.location = "/login"
-			redirect(user);
+			// redirect(user);
 			return { 
 				type: SIGNUP,
 				user: user	

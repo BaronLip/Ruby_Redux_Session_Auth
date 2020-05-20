@@ -4,10 +4,9 @@ import usersReducer from '../reducers/usersReducer'
 import sessionsReducer from '../reducers/sessionsReducer';
 
 export default configureStore({
-  reducer: {
-    session: sessionsReducer,
-    user: usersReducer,
-  },
-  middleware: [thunk]
-  
+	reducer: {
+		session: sessionsReducer,
+		user: usersReducer,
+		},
+		middleware: [thunk]
 });

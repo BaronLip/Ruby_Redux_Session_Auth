@@ -144,7 +144,7 @@ Before converting into a Redux app, additional functionality such as logging out
 9. What happened to "this" when making a function call? _Make sure `.bind(this)` for each function, in the constructor of the component._
 10. What are the determining factors of creating state from React to Redux? For this app, I'm basing the reducers by the backend controllers. Since there is a sessions and user controller, there will be a sessions and users reducers.
 11. Does React-Router-Dom not have "history" built in? Why is "connected-react-router" necessary for history in Redux?
-
+_
 
 ### Things I learned/practiced
 * Creating new branches in Git.
