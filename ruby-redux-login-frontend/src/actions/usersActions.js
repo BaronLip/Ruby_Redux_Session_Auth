@@ -15,29 +15,30 @@ export const SIGNUP = "SIGNUP"
 
 export const signup = (user, history) => {
 	console.log(user, history);
-	return axios.post(
-		'http://localhost:3001/users', {user}, {withCredentials: true}
-	)
-	.then( (response) => {
-		console.log(response);
-		// debugger;
-		if (response.data.status === 'created') {
-			let user = response.data.user;
-			// window.location = "/login"
-			// redirect(user);
-			history.push('/login', {user: user})
-			return { 
-				type: SIGNUP,
-				user: user	
+	return function (dispatch) {
+		return axios.post(
+			'http://localhost:3001/users', {user}, {withCredentials: true}
+		)
+		.then( (response) => {
+			console.log(response);
+			if (response.data.status === 'created') {
+				let user = response.data.user;
+				// window.location = "/login"
+				// redirect(user);
+				history.push('/login', {user: user})
+				dispatch ({ 
+					type: SIGNUP,
+					user: user	
+				})
+				// ********************
+				// dispatch({
+				// 	type: SIGNUP,
+				// 	user: response.data 
+				// }) 
 			}
-			// ********************
-			// dispatch({
-			// 	type: SIGNUP,
-			// 	user: response.data 
-			// }) 
-		}
-	})
-	.catch(error => console.log('api errors:', error))
+		})
+		.catch(error => console.log('api errors:', error))
+	}
 }
 
 
