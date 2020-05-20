@@ -8,7 +8,7 @@ const initialState = {
 
 const usersReducer = (state = initialState, action) => {
 	console.log(state);
-	// return state;
+	// debugger;
 	switch (action.type) {
 		case "SIGNUP":
 			return {

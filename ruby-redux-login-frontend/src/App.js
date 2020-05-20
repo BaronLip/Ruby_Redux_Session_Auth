@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Home from './components/Home'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Success from "./components/Success";
+
+import history from "./utilities/history"
+
 
 class App extends Component {
 	
@@ -49,7 +52,7 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<BrowserRouter>
+				<BrowserRouter history={history}>
 				<Switch>
 					<Route 
 						exact path='/' 

@@ -26,15 +26,15 @@ class Signup extends Component {
 		event.preventDefault();
 		const {username, email, password, password_confirmation} = this.state;
 		console.log(this.state);
-		let user = {
+		let userInfo = {
 			username: username,
 			email: email,
 			password: password,
 			password_confirmation: password_confirmation
 		};
-		console.log("Signup User", user);
+		console.log("Signup User", userInfo);
 
-		this.props.signup(user);
+		this.props.signup(userInfo);
 		
 		// axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
 		// .then(response => {
@@ -77,7 +77,8 @@ class Signup extends Component {
 	
 	render() {
 		const {username, email, password, password_confirmation} = this.state;
-		
+		// console.log(this.props);
+		// console.log(this.state);
 		return (
 			<div>
 				<h1>Sign Up</h1>
@@ -138,7 +139,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) =>{
 	return {
-		signup: signup
+		signup: (userInfo) => dispatch(signup(userInfo))
 	}
 }
 

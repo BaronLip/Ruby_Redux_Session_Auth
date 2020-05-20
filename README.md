@@ -99,29 +99,32 @@ Before converting into a Redux app, additional functionality such as logging out
 22. Added user object as a props to the Success component.
 23. Added logout link and method to Success component.
 24. Created three "paths" to sign in: the included code, immediate Success, and requiring Login after Signup. See comments in Signup.js.
+    **START REDUX CONVERSION**
 25. Created "Redux" Branch.
 26. Create Sessions and Users, reducers and actions folders.
 27. Import usersReducer to store.js and add to reducer object. 
-28. Connect the 
+28. Connect usersReducer to Signup component.
+29. Repeat steps with SessionsReducer.
+30. Create Actions folder.
+31. Create userActions file.
+32. Copied over signup function to userActions.
+33. Added mapDispatchToProps into Signup.js.
+34. Add mapDispatchToProps to connect() statement in Signup.js.
+35. Adjusted handleSubmit() to utilize signup dispatch.
+36. In process of determining how to utilize helper methods from App.js and figuring out how to redirect in action file.
+    1.  Installed "history" library.
+        1.  npm install --save history
+    2.  imported {createBrowserHistory} from 'history'
+    3.  utilized pushing into browserHistory for reDirect.
+37. Updated mapDispatchToProps() to dispatch and allow for userInfo parameter.
+38. Getting an async error. Searches recommend installing redux-thunk.
+    1.  $ npm install --save redux-thunk
+    2.  store.js - import thunk from 'redux-thunk';
+    3.  Turns out that thunk is included in ReduxToolKit, just needed to specify to add it within configure store.
+39. ~~After much more googling, I believe the latest solution would be "connected-react-router". https://github.com/supasate/connected-react-router.~~
+40. After reading more on redux.js, <Router> needs to be wrapped in <Provider> when using Redux.
 
 
-
-### Logic
-The sessions_controller does not have "standard" Restful routes. It creates a session by setting the status of "logged_in". `is_logged_in` verifies the logged in status and returns the current_user. or "logged_out" and returns the user that is found.
-
-App.js serves as a router to render all other components to the DOM. It will not render itself. 
-
-It will manage authentication state locally...
-
-user
-
-current_user
-
-logged_in
-
-logged_out
-
-status
 
 
 ### Questions
@@ -140,6 +143,7 @@ status
      4. `this.props.history.push( route, object)` _This is the option used._
 9. What happened to "this" when making a function call? _Make sure `.bind(this)` for each function, in the constructor of the component._
 10. What are the determining factors of creating state from React to Redux? For this app, I'm basing the reducers by the backend controllers. Since there is a sessions and user controller, there will be a sessions and users reducers.
+11. Does React-Router-Dom not have "history" built in? Why is "connected-react-router" necessary for history in Redux?
 
 
 ### Things I learned/practiced
@@ -154,5 +158,7 @@ status
 * `componentWillMount()` is depreciated. Surprised it was being used but could see why.
 * Converting React app to Redux conventions.
 * Making an action_types file prevents the requirement of having to change the "string" everywhere in the app. Just look it up in the action_types file and update. (I still find this a bit odd cause since the actionName and the string are the same. If one is changed, it would no longer match and could sacrifice readability.)
-* "Container" refers to a component that is connected to the Redux Store.
+* "Container" refers to a component that is connected to the Redux Store, a stateful component.
+* With Redux, <Router> needs to be wrapped in <Provider> in order for the application to have the proper routing.
+* **Either create a React app or a Redux app. Converting from React to Redux is very not fun.**
 

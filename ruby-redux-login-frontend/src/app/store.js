@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import thunk from 'redux-thunk';
 import usersReducer from '../reducers/usersReducer'
 import sessionsReducer from '../reducers/sessionsReducer';
 
@@ -7,4 +8,6 @@ export default configureStore({
     session: sessionsReducer,
     user: usersReducer,
   },
+  middleware: [thunk]
+  
 });

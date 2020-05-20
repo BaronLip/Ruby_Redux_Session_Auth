@@ -1,31 +1,43 @@
+// External imports
 import axios from 'axios'
 
+// const browserHistory = createBrowserHistory();
+
+// Action Creator(s)
 export const SIGNUP = "SIGNUP"
 
+// const signupUser = (user) => {
+// 	console.log(user);
+// 	return { type: SIGNUP, user };
+// }
+
+const redirect = (user) => {
+	browserHistory.push('/login', user);
+}
+
 export const signup = (user) => {
-	console.log("Actions for User", user)
-	axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
-	.then(response => {
-	if (response.data.status === 'created') {
-		console.log(response.data);
-		// this.props.handleLogin(response.data);
-		// // Opt1 Prior code.
-		// this.redirect();
-
-		// // Opt2 Goes directly to Success after signup.
-		// this.props.history.push('/success', {user: user});
-
-		// // Opt3 Goes to login page. Requires login, Then success confirmation.
-		this.props.history.push('/login', {user: user});
-		return {
-			type: SIGNUP,
-			user: response.data 
+	console.log(user);
+	return axios.post(
+		'http://localhost:3001/users', {user}, {withCredentials: true}
+	)
+	.then( (response) => {
+		console.log(response);
+		// debugger;
+		if (response.data.status === 'created') {
+			let user = response.data.user;
+			// window.location = "/login"
+			redirect(user);
+			return { 
+				type: SIGNUP,
+				user: user	
+			}
+			// ********************
+			// browserHistory.push('/login', {user: user})
+			// dispatch({
+			// 	type: SIGNUP,
+			// 	user: response.data 
+			// }) 
 		}
-	} else {
-		this.setState({
-			errors: response.data.errors
-		})
-	}
 	})
 	.catch(error => console.log('api errors:', error))
 }
