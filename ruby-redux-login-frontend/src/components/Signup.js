@@ -34,7 +34,7 @@ class Signup extends Component {
 		};
 		console.log("Signup User", userInfo);
 
-		this.props.signup(userInfo);
+		this.props.signup(userInfo, this.props.history);
 		
 		// axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
 		// .then(response => {
@@ -139,7 +139,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) =>{
 	return {
-		signup: (userInfo) => dispatch(signup(userInfo))
+		signup: (userInfo, history) => dispatch(signup(userInfo, history))
 	}
 }
 

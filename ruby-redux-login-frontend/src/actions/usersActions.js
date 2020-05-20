@@ -13,8 +13,8 @@ export const SIGNUP = "SIGNUP"
 // 	history.push('/login', user);
 // }
 
-export const signup = (user) => {
-	console.log(user);
+export const signup = (user, history) => {
+	console.log(user, history);
 	return axios.post(
 		'http://localhost:3001/users', {user}, {withCredentials: true}
 	)
@@ -25,12 +25,12 @@ export const signup = (user) => {
 			let user = response.data.user;
 			// window.location = "/login"
 			// redirect(user);
+			history.push('/login', {user: user})
 			return { 
 				type: SIGNUP,
 				user: user	
 			}
 			// ********************
-			// browserHistory.push('/login', {user: user})
 			// dispatch({
 			// 	type: SIGNUP,
 			// 	user: response.data 
@@ -41,3 +41,7 @@ export const signup = (user) => {
 }
 
 
+// export const signup = (user, history) => async dispatch => {
+// 	const response = await axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
+// 	dispatch({ type: SIGNUP, payload: user });
+//   };
