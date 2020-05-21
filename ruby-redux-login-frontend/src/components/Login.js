@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 class Login extends Component {
@@ -54,7 +55,7 @@ class Login extends Component {
 
 	// Prior code tied to componentWillMount()/ componentDidMount().
 	// redirect = () => {
-	// 	this.props.history.push('/')
+	// 	this.props.history.push('/success')
 	// }
 	
 	handleErrors = () => {
@@ -118,4 +119,12 @@ class Login extends Component {
 	}
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+	console.log(state);
+	return {
+		session: state.session,
+		user: state.user
+	}
+}
+
+export default connect(mapStateToProps)(Login);

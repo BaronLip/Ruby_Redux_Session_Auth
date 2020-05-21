@@ -123,6 +123,7 @@ Before converting into a Redux app, additional functionality such as logging out
     3.  Turns out that thunk is included in ReduxToolKit, just needed to specify to add it within configure store.
 39. ~~After much more googling, I believe the latest solution would be "connected-react-router". https://github.com/supasate/connected-react-router.~~
 40. After reading more on redux.js, <Router> needs to be wrapped in <Provider> when using Redux.
+41. 
 
 
 
