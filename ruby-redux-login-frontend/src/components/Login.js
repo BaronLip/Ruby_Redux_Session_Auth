@@ -1,7 +1,11 @@
+// External imports:
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+
+// Local imports:
+import { login } from "../actions/sessionActions"
+
 class Login extends Component {
 	
 	constructor(props) {
@@ -28,29 +32,31 @@ class Login extends Component {
 	};
 	
 	handleSubmit = (event) => {
-		event.preventDefault()
-		const {username, email, password} = this.state
+		event.preventDefault();
+		const {username, email, password} = this.state;
 	
-		let user = {
+		let userInfo = {
 		username: username,
 		email: email,
 		password: password
-		}
+		};
 		
-		axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
-		.then(response => {
-			if (response.data.logged_in) {
-				this.props.handleLogin(response.data);
-				// // Prior code.
-				// this.redirect();
-				this.props.history.push('/success', {user: response.data})
-			} else {
-				this.setState({
-				errors: response.data.errors
-				})
-			}
-		})
-		.catch(error => console.log('api errors:', error))
+		this.props.login(userInfo, this.props.history);
+
+		// axios.post('http://localhost:3001/login', {userInfo}, {withCredentials: true})
+		// .then(response => {
+		// 	if (response.data.logged_in) {
+		// 		this.props.handleLogin(response.data);
+		// 		// // Prior code.
+		// 		// this.redirect();
+		// 		this.props.history.push('/success', {user: response.data})
+		// 	} else {
+		// 		this.setState({
+		// 		errors: response.data.errors
+		// 		})
+		// 	}
+		// })
+		// .catch(error => console.log('api errors:', error))
 	};
 
 	// Prior code tied to componentWillMount()/ componentDidMount().
@@ -73,7 +79,6 @@ class Login extends Component {
 	
 	render() {
 		const {username, email, password} = this.state;
-		// console.log(this.props);
 		return (
 		<div>
 			<h1>Log In</h1>
@@ -127,4 +132,10 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps)(Login);
+const mapDispatchToProps = (dispatch) => {
+	return {
+		login: (userInfo, historyProp) => (dispatch(login(userInfo, historyProp))),
+	}
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

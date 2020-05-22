@@ -165,4 +165,6 @@ _In the process of just using react-router-dom only. Based on "https://reacttrai
 * With Redux, <Router> needs to be wrapped in <Provider> in order for the application to have the proper routing.
 * **Either create a React app or a Redux app. Converting from React to Redux is very not fun.**
 * THUNK...this is still going to take some practice.
+* Dispatching to the store before redirecting creates an accurate state.
+* 
 

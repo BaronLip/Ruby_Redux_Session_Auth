@@ -4,13 +4,19 @@ const initialState = {
 
 const sessionsReducer = (state = initialState, action) => {
 	console.log(state);
-	return state;
-	// switch (action.type) {
-	// 	case LOGIN:
-	// 		return {
-	// 			user: action.user
-	// 		}
-	// }
+	switch (action.type) {
+		case "LOGIN":
+			return {
+				isLoggedIn: true,
+				user: action.user
+			}
+		case "LOGOUT" :
+			return {
+				isLoggedIn: false,
+				user: {}
+			}
+	default: return state;
+	}
 }
 
 export default sessionsReducer;
