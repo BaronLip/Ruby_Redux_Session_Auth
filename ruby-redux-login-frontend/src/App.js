@@ -1,10 +1,15 @@
+// External imports:
 import React, { Component } from 'react';
-import axios from 'axios'
+import Axios from 'axios'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+
+// Internal imports:
 import Home from './components/Home'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Success from "./components/Success";
+import store from './app/store';
+// import 
 
 class App extends Component {
 	constructor(props) {
@@ -20,9 +25,9 @@ class App extends Component {
 	}
 	
 	loginStatus = () => {
-		axios.get('http://localhost:3001/logged_in', {withCredentials: true})
+		Axios.get('http://localhost:3001/logged_in', {withCredentials: true})
 		.then(response => {
-			console.log(response);
+			console.log(response, store.getState());
 			// if (response.data.logged_in) {
 			// 	this.handleLogin(response)
 			// } else {

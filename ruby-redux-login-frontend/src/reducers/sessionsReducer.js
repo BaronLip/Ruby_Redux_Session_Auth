@@ -3,7 +3,7 @@ const initialState = {
 }
 
 const sessionsReducer = (state = initialState, action) => {
-	console.log(state);
+	console.log(state, action);
 	switch (action.type) {
 		case "LOGIN":
 			return {

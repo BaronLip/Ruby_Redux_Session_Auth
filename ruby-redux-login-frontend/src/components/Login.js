@@ -1,10 +1,10 @@
 // External imports:
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom';
 
 // Local imports:
-import { login } from "../actions/sessionActions"
+import { login } from "../actions/sessionActions";
 
 class Login extends Component {
 	

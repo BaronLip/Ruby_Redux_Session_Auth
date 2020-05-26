@@ -6,16 +6,16 @@ const LOGOUT = "LOGOUT";
 
 // Action creators:
 const loginUser = (user) => {
+	console.log(user)
 	return {
 		type: LOGIN,
-		user: user
+		user: user,
 	}
 }
 
-const logoutUser = (user) => {
+const logoutUser = () => {
 	return {
 		type: LOGOUT,
-		user: user
 	}
 }
 
@@ -24,7 +24,7 @@ const redirectSuccess = (user, history) => {
 }
 
 const redirectHome = (user, history) => {
-	console.log(user, history);
+	console.log(history, user);
 	history.push("/")
 }
 
@@ -48,18 +48,20 @@ export const login = (user, historyProp) => {
 }
 
 export const logout = (user, history) => {
-		console.log(user, history);
-		return function(dispatch) {
-			// Deletes session info from backend.
-			return Axios.delete('http://localhost:3001/logout')
-			.then(response => {
-				// Console.log for confirmation.
-				console.log(response.data);
-				dispatch(logoutUser())
+	console.log(user, history);
+	return function(dispatch) {
+		// Deletes session info from backend.
+		return Axios.delete('http://localhost:3001/logout')
+		.then(response => {
+			// Console.log for confirmation.
+			console.log("Logging Out Response", response.data);
+			// debugger
+			if (response.data.logged_out) {
+				dispatch(logoutUser());
 				// Sends user back to homepage.
 				redirectHome(user, history);
-			})
-			.catch(error => console.log('api errors:', error))
-	
-		}
+			}
+		})
+		.catch(error => console.log('api errors:', error))
+	}
 }

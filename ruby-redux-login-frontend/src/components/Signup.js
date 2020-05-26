@@ -34,7 +34,7 @@ class Signup extends Component {
 			password: password,
 			password_confirmation: password_confirmation
 		};
-		console.log("Signup User", userInfo);
+		console.log("This is form userInfo", userInfo);
 		this.props.signup(userInfo, this.props.history);
 	};
 	
@@ -97,7 +97,6 @@ class Signup extends Component {
 
 				<div>
 				{ this.state.errors ? this.handleErrors() : null }
-				{/* { console.log("Signup has rendered.") } */}
 				</div>
 			</div>
 		);
@@ -114,10 +113,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) =>{
 	return {
-		signup: (userInfo, history) => dispatch(signup(userInfo, history))
+		signup: (userInfo, history) => dispatch(signup(userInfo, history)),
+		// login: (userInfo) => dispatch(login(userInfo))
 	}
 }
 
 // Use the connect() in conjunction with mapStateToProps & mapDispatchToProps to connect the Redux Store to a React component.
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Signup))
-// export default Signup;

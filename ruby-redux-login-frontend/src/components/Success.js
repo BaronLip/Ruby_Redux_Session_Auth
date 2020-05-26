@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 import { logout } from '../actions/sessionActions'
+import store from '../app/store';
 
 class Success extends Component {
 	
@@ -30,8 +31,12 @@ class Success extends Component {
 	// 	this.props.history.push('/');
 	// }
 
+	componentDidMount() {
+		console.log(store.getState());
+	}
+
 	render () {
-		// console.log(this.state.user)
+		console.log(this.props)
 		return (
 			<div>
 				<p>Good job! You have Signed in.</p>
@@ -45,10 +50,10 @@ class Success extends Component {
 }
 
 const mapStateToProps = (state) => {
-	console.log(state)
+	console.log("This is state of Success", state)
 	return {
 		isLoggedIn: state.session.isLoggedIn,
-		user: state.user
+		user: state.session.user
 	}
 }
 

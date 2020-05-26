@@ -1,5 +1,5 @@
 // External imports
-import axios from 'axios'
+import Axios from 'axios'
 
 // Action Constant(s)
 const SIGNUP = "SIGNUP"
@@ -19,7 +19,7 @@ const redirect = (user, history) => {
 export const signup = (user, history) => {
 	console.log(user, history);
 	return function (dispatch) {
-		return axios.post(
+		return Axios.post(
 			'http://localhost:3001/users', {user}, {withCredentials: true}
 		)
 		.then( (response) => {
@@ -27,7 +27,7 @@ export const signup = (user, history) => {
 			if (response.data.status === 'created') {
 				let user = response.data.user;
 				// Dispatch using action creator
-				dispatch(signupUser(user))
+				dispatch(signupUser(user));
 				// Call redirect()
 				redirect({user: user}, history);
 			}
