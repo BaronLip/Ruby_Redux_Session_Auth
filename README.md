@@ -13,7 +13,6 @@ Knowing React will work without Redux conventions, This app started with the Red
 Before converting into a Redux app, additional functionality such as logging out and redirects were added on to the [blog post](https://medium.com/how-i-get-it/react-with-rails-user-authentication-8977e98762f2) code.
 
 
-
 ---
 ## Resources:
 There was an ample amount of web searches and [stackoverflow](stackoverflow.com) hints/recommendations. My experience is the docs helped the most to clarify what was needed. However, I also discovered the combinations of React resources could lead to different solutions and at my current level of knowledge, can be confusing. I recommend to continue practicing to better understand the functionality and gain knowledge. 
@@ -22,6 +21,15 @@ There was an ample amount of web searches and [stackoverflow](stackoverflow.com)
 3. https://react-redux.js.org/
 4. https://redux-toolkit.js.org/
 5. https://reacttraining.com/react-router/web/guides/quick-start
+
+
+---
+## Versions:
+• ruby 2.6.1p33 (2019-01-30 revision 66950)
+• react 16.13.1
+• redux 4.0.5
+• axios 0.19.2 
+
 
 ---
 ## Backend Process:
