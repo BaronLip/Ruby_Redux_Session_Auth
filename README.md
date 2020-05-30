@@ -6,11 +6,13 @@ This repo is a practice in:
 2. Applying React patterns of state and props.
 3. Converting a React app to a Redux app.
 
+Each branch is a different set of code. "master" is nearly identical to the supplied code in the blog post... I think. React builds upon it. Redux converts the process with Redux conventions.
+
 The initial React code is supplied by the [blog post](https://medium.com/how-i-get-it/react-with-rails-user-authentication-8977e98762f2). Walking through that code is a great first step in understanding the combination of session auth and React. The larger portion of my focus is practicing the conversion to Redux.
 
 Knowing React will work without Redux conventions, This app started with the Redux toolkit template to help avoid conversion troubles later. 
 
-Before converting into a Redux app, additional functionality such as logging out and redirects were added on to the [blog post](https://medium.com/how-i-get-it/react-with-rails-user-authentication-8977e98762f2) code.
+Before converting into a Redux app, additional functionality such as logging out and redirects were added onto the [blog post](https://medium.com/how-i-get-it/react-with-rails-user-authentication-8977e98762f2) code.
 
 
 ---
@@ -28,7 +30,8 @@ There was an ample amount of web searches and [stackoverflow](stackoverflow.com)
 • ruby 2.6.1p33 (2019-01-30 revision 66950)
 • react 16.13.1
 • redux 4.0.5
-• axios 0.19.2 
+• redux toolkit 6.14.5
+• axios 0.19.2
 
 
 ---
